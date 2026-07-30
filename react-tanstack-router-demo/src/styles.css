@@ -528,3 +528,75 @@ textarea {
   background: var(--danger);
   margin-left: 0.4rem;
 }
+
+.tabs {
+  display: flex;
+  gap: 0.3rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1rem;
+}
+
+.tab {
+  padding: 0.6rem 1rem;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+}
+
+.tab:hover {
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.tab.active {
+  color: var(--accent-strong);
+  border-bottom-color: var(--accent);
+  font-weight: 600;
+}
+
+.tab-panel {
+  margin-bottom: 1.5rem;
+}
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.accordion-item {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--bg-card);
+}
+
+.accordion-trigger {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.8rem 1rem;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+}
+
+.accordion-trigger:hover {
+  background: var(--bg-elevated);
+  text-decoration: none;
+}
+
+.accordion-chevron {
+  color: var(--accent);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.accordion-body {
+  padding: 0 1rem 0.9rem;
+  color: var(--text-muted);
+  font-size: 0.86rem;
+  border-top: 1px solid var(--border);
+  padding-top: 0.7rem;
+}

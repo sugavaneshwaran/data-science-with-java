@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthRouteImport } from './routes/_auth'
 import { Route as ChartsRouteImport } from './routes/charts'
+import { Route as DeepLinkingRouteImport } from './routes/deep-linking'
 import { Route as DeferredRouteImport } from './routes/deferred'
 import { Route as EditorRouteImport } from './routes/editor'
 import { Route as LoginRouteImport } from './routes/login'
@@ -37,6 +38,11 @@ const ChartsRoute = ChartsRouteImport.update({
   path: '/charts',
   getParentRoute: () => rootRouteImport,
 } as any).lazy(() => import('./routes/charts.lazy').then((d) => d.Route))
+const DeepLinkingRoute = DeepLinkingRouteImport.update({
+  id: '/deep-linking',
+  path: '/deep-linking',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DeferredRoute = DeferredRouteImport.update({
   id: '/deferred',
   path: '/deferred',
@@ -92,6 +98,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/posts': typeof PostsRouteRouteWithChildren
   '/charts': typeof ChartsRoute
+  '/deep-linking': typeof DeepLinkingRoute
   '/deferred': typeof DeferredRoute
   '/editor': typeof EditorRoute
   '/login': typeof LoginRoute
@@ -105,6 +112,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/charts': typeof ChartsRoute
+  '/deep-linking': typeof DeepLinkingRoute
   '/deferred': typeof DeferredRoute
   '/editor': typeof EditorRoute
   '/login': typeof LoginRoute
@@ -121,6 +129,7 @@ export interface FileRoutesById {
   '/posts': typeof PostsRouteRouteWithChildren
   '/_auth': typeof AuthRouteWithChildren
   '/charts': typeof ChartsRoute
+  '/deep-linking': typeof DeepLinkingRoute
   '/deferred': typeof DeferredRoute
   '/editor': typeof EditorRoute
   '/login': typeof LoginRoute
@@ -137,6 +146,7 @@ export interface FileRouteTypes {
     | '/'
     | '/posts'
     | '/charts'
+    | '/deep-linking'
     | '/deferred'
     | '/editor'
     | '/login'
@@ -150,6 +160,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/charts'
+    | '/deep-linking'
     | '/deferred'
     | '/editor'
     | '/login'
@@ -165,6 +176,7 @@ export interface FileRouteTypes {
     | '/posts'
     | '/_auth'
     | '/charts'
+    | '/deep-linking'
     | '/deferred'
     | '/editor'
     | '/login'
@@ -181,6 +193,7 @@ export interface RootRouteChildren {
   PostsRouteRoute: typeof PostsRouteRouteWithChildren
   AuthRoute: typeof AuthRouteWithChildren
   ChartsRoute: typeof ChartsRoute
+  DeepLinkingRoute: typeof DeepLinkingRoute
   DeferredRoute: typeof DeferredRoute
   EditorRoute: typeof EditorRoute
   LoginRoute: typeof LoginRoute
@@ -210,6 +223,13 @@ declare module '@tanstack/react-router' {
       path: '/charts'
       fullPath: '/charts'
       preLoaderRoute: typeof ChartsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/deep-linking': {
+      id: '/deep-linking'
+      path: '/deep-linking'
+      fullPath: '/deep-linking'
+      preLoaderRoute: typeof DeepLinkingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/deferred': {
@@ -314,6 +334,7 @@ const rootRouteChildren: RootRouteChildren = {
   PostsRouteRoute: PostsRouteRouteWithChildren,
   AuthRoute: AuthRouteWithChildren,
   ChartsRoute: ChartsRoute,
+  DeepLinkingRoute: DeepLinkingRoute,
   DeferredRoute: DeferredRoute,
   EditorRoute: EditorRoute,
   LoginRoute: LoginRoute,

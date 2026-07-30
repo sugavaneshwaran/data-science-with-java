@@ -31,6 +31,7 @@ const navGroups = [
     label: 'Routing patterns',
     links: [
       { to: '/users', label: 'Search params' },
+      { to: '/deep-linking', label: 'Deep linking' },
       { to: '/redirect-demo', label: 'Redirect demo' },
     ],
   },

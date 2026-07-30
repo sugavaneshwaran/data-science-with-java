@@ -26,6 +26,7 @@ No test runner or linter is configured.
 | `src/routes/posts/$postId.tsx` | `/posts/$postId` | Dynamic path param via typed `useParams`/`useLoaderData`, loader throws `notFound()` for unknown ids, per-route `errorComponent` + `notFoundComponent` |
 | `src/routes/files/$.tsx` | `/files/$` | Splat/catch-all route reading the rest of the path as a single `_splat` param (fake file browser) |
 | `src/routes/users/index.tsx` | `/users` | Hand-rolled `validateSearch` (no zod) for `{ page, sort, filter }`, `loaderDeps` refetching on search change, pagination/sort/filter driven by `<Link search={...}>` and `useNavigate`/`useSearch` |
+| `src/routes/deep-linking.tsx` | `/deep-linking` | Deep linking of *UI state* (not just data): active tab and multi-expanded FAQ rows live in `validateSearch`-typed search params instead of `useState`, so the exact view is restorable from a cold URL |
 | `src/routes/_auth.tsx` | (pathless layout) | `beforeLoad` checks mock auth and throws `redirect({ to: '/login', search: { redirect: location.href } })` |
 | `src/routes/_auth.dashboard.tsx` | `/dashboard` | Protected page behind the `_auth` layout, with a logout button |
 | `src/routes/login.tsx` | `/login` | `validateSearch` for `{ redirect?: string }`; logging in sets mock auth then navigates to the captured redirect target |

@@ -45,6 +45,17 @@ function IndexComponent() {
       ),
     },
     {
+      title: 'Deep linking',
+      description:
+        'A tabbed panel and multi-expand accordion whose open tab/rows live in the URL, so the exact view is shareable and survives a reload.',
+      feature: 'UI state synced to search params',
+      link: (
+        <Link to="/deep-linking" search={{ tab: 'overview', expanded: '' }}>
+          Open demo
+        </Link>
+      ),
+    },
+    {
       title: 'File browser',
       description: 'A splat/catch-all route reads the rest of the path as one _splat param.',
       feature: 'Splat routes',
